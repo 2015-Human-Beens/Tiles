@@ -16,9 +16,9 @@ import java.awt.event.MouseEvent;
  *
  * @author kevin.lawrence
  */
-class TileEnvironment extends Environment {
+class TileEnvironment extends Environment implements TileProviderIntf {
     private TileMap tileMap;
-    
+    private Texture texture;
     
     public TileEnvironment() {
     
@@ -26,8 +26,18 @@ class TileEnvironment extends Environment {
 
     @Override
     public void initializeEnvironment() {
+        texture = new Texture();
+        
         tileMap = new TileMap(null, new Dimension(10, 10), new Dimension(5, 5));
-        tileMap.setMapVisualizer(new TileMapVisualizer());
+        tileMap.setMapVisualizer(new TileMapVisualizer(this));
+        int[][] testMap = new int[][]{
+            { 2, 2, 2, 3, 4 },
+            { 2, 3, 3, 3, 1 },
+            { 3, 3, 1, 1, 1 },
+            { 3, 1, 1, 1, 1 },
+            { 1, 1, 1, 4, 4 }
+        };
+        tileMap.setData(testMap);
     }
 
     @Override
@@ -55,6 +65,11 @@ class TileEnvironment extends Environment {
         if (tileMap != null){
             tileMap.drawMap(graphics);
         }
+    }
+
+    @Override
+    public Image getTile(Integer iD) {
+        return texture.getTexture(iD);
     }
     
 }
