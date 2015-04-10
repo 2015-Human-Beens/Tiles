@@ -20,6 +20,8 @@ public class Texture {
     private ImageManager textures;
     private BufferedImage tileSheet;
     private HashMap<Integer, String> textureIDs;
+    
+    private static final int TILE_LENGTH = 16;
 
     private static final String TEXTURE_GRASS = "GRASS";
     private static final String TEXTURE_WATER = "WATER";
@@ -40,10 +42,10 @@ public class Texture {
         textures = new ImageManager();
         tileSheet = (BufferedImage) ResourceTools.loadImageFromResource("resources/textures.png");
 
-        textures.addImage(TEXTURE_GRASS, tileSheet.getSubimage(0, 0, 16, 16));
-        textures.addImage(TEXTURE_WATER, tileSheet.getSubimage(16, 0, 16, 16));
-        textures.addImage(TEXTURE_SAND, tileSheet.getSubimage(32, 0, 16, 16));
-        textures.addImage(TEXTURE_MOUNTAIN, tileSheet.getSubimage(0, 16, 16, 16));
+        textures.addImage(TEXTURE_GRASS, tileSheet.getSubimage(0, 0, TILE_LENGTH, TILE_LENGTH));
+        textures.addImage(TEXTURE_WATER, tileSheet.getSubimage(16, 0, TILE_LENGTH, TILE_LENGTH));
+        textures.addImage(TEXTURE_SAND, tileSheet.getSubimage(32, 0, TILE_LENGTH, TILE_LENGTH));
+        textures.addImage(TEXTURE_MOUNTAIN, tileSheet.getSubimage(0, 16, TILE_LENGTH, TILE_LENGTH));
     }
     
     

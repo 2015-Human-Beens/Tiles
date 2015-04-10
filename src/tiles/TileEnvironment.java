@@ -28,7 +28,7 @@ class TileEnvironment extends Environment implements TileProviderIntf {
     public void initializeEnvironment() {
         texture = new Texture();
         
-        tileMap = new TileMap(null, new Dimension(10, 10), new Dimension(5, 5));
+        tileMap = new TileMap(null, new Dimension(16, 16), new Dimension(5, 5));
         tileMap.setMapVisualizer(new TileMapVisualizer(this));
         int[][] testMap = new int[][]{
             { 2, 2, 2, 3, 4 },
